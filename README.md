@@ -20,24 +20,24 @@ Use this skill when you see any of these:
 
 ### Option A — git clone (recommended)
 ```bash
-git clone https://github.com/sajdijjsid/openclaw-browser-recover.git
-cp -r openclaw-browser-recover/skill/openclaw-browser-recover ~/.openclaw/workspace/skills/
+git clone https://github.com/sajdijjsid/openclaw-browser-connect-recover.git
+cp -r openclaw-browser-connect-recover/skill/openclaw-browser-connect-recover ~/.openclaw/workspace/skills/
 ```
 
 ### Option B — download ZIP (no git)
-1. Download: <https://github.com/sajdijjsid/openclaw-browser-recover/archive/refs/heads/main.zip>
+1. Download: <https://github.com/sajdijjsid/openclaw-browser-connect-recover/archive/refs/heads/main.zip>
 2. Unzip it, then copy:
 ```bash
-cp -r openclaw-browser-recover-main/skill/openclaw-browser-recover ~/.openclaw/workspace/skills/
+cp -r openclaw-browser-connect-recover-main/skill/openclaw-browser-connect-recover ~/.openclaw/workspace/skills/
 ```
 
 ## What you get
-- `skills/openclaw-browser-recover/SKILL.md`: the SOP
-- `skills/openclaw-browser-recover/scripts/healthcheck.sh`: one-shot port/gateway check
+- `skills/openclaw-browser-connect-recover/SKILL.md`: the SOP
+- `skills/openclaw-browser-connect-recover/scripts/healthcheck.sh`: one-shot port/gateway check
 
 Run healthcheck:
 ```bash
-bash ~/.openclaw/workspace/skills/openclaw-browser-recover/scripts/healthcheck.sh
+bash ~/.openclaw/workspace/skills/openclaw-browser-connect-recover/scripts/healthcheck.sh
 ```
 
 ## Workflow (short version)
