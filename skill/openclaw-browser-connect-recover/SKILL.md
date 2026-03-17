@@ -1,9 +1,9 @@
 ---
-name: openclaw-browser-recover
+name: openclaw-browser-connect-recover
 description: "Diagnose and recover OpenClaw browser tool failures (timeout / MCP Connection closed) involving gateway ports 18789/18791 and Chrome CDP 9222 conflicts. Use when browser tool says timed out/restart gateway, MCP Connection closed, port 9222 in use, cannot start openclaw profile, or user asks to fix browser control / reconnect / cannot snapshot." 
 ---
 
-# OpenClaw Browser Recover
+# OpenClaw Chrome Connect Recover
 
 目标：在 **不瞎重试** 的前提下，快速恢复 OpenClaw `browser` 工具可用性，并给出**最短**下一步动作。
 

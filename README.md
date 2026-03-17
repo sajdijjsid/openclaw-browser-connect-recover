@@ -1,6 +1,6 @@
-# OpenClaw Browser Recover (Skill)
+# OpenClaw Chrome Connect Recover (Skill)
 
-A practical OpenClaw **skill** that helps you recover when the `browser` tool gets flaky:
+A practical OpenClaw **skill** that helps you recover when OpenClaw's browser-control tries to drive a **local Google Chrome (CDP 9222)** and gets flaky:
 
 - `timed out. Restart the OpenClaw gateway` (and repeating calls keeps failing)
 - `McpError: Connection closed`
@@ -22,6 +22,9 @@ Use this skill when you see any of these:
 ```bash
 git clone https://github.com/sajdijjsid/openclaw-browser-connect-recover.git
 cp -r openclaw-browser-connect-recover/skill/openclaw-browser-connect-recover ~/.openclaw/workspace/skills/
+
+# (optional) rename to keep a shorter local skill folder name
+# mv ~/.openclaw/workspace/skills/openclaw-browser-connect-recover ~/.openclaw/workspace/skills/openclaw-browser-recover
 ```
 
 ### Option B — download ZIP (no git)
