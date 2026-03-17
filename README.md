@@ -1,43 +1,51 @@
-# openclaw-browser-recover
+# OpenClaw Browser Recover (Skill)
 
-A small, practical recovery playbook for OpenClaw browser-control flakiness (timeouts / MCP connection drops / 9222 conflicts).
+A practical OpenClaw **skill** that helps you recover when the `browser` tool gets flaky:
 
-This repo packages the workflow as an OpenClaw **skill** so you can reuse it consistently.
-
-## What problem this solves
-When controlling a browser via OpenClaw, you may hit:
-
-- `browser` tool: **timed out. Restart the OpenClaw gateway**
+- `timed out. Restart the OpenClaw gateway` (and repeating calls keeps failing)
 - `McpError: Connection closed`
-- Port conflicts: **9222 already in use** (Chrome CDP)
+- `Port 9222 is already in use` (Chrome CDP conflict)
 
-This skill standardizes the recovery sequence so you don’t spam retries or randomly restart things.
+This repo packages a **minimal, repeatable recovery SOP** so you stop guessing and stop spamming retries.
 
 ## When to use
-Use this skill when you see any of the following symptoms:
+Use this skill when you see any of these:
 
 - `browser.status / browser.tabs / browser.snapshot` time out
-- `MCP Connection closed` during snapshot/click/type
-- You can list tabs but cannot snapshot
-- You want to switch between `profile=user` and `profile=openclaw` but **9222 is occupied**
+- Snapshots/clicks fail with **Connection closed**
+- Tabs list works but snapshot doesn’t
+- You need to reason about **18789 / 18791 / 9222** and which side is broken
 
-## Quick start
-Copy the skill folder into your OpenClaw workspace:
+## Install (copy into your OpenClaw workspace)
 
+### Option A — git clone (recommended)
 ```bash
-cp -r skill/openclaw-browser-recover ~/.openclaw/workspace/skills/
+git clone https://github.com/sajdijjsid/openclaw-browser-recover.git
+cp -r openclaw-browser-recover/skill/openclaw-browser-recover ~/.openclaw/workspace/skills/
 ```
 
-(Optional) run the healthcheck script:
+### Option B — download ZIP (no git)
+1. Download: <https://github.com/sajdijjsid/openclaw-browser-recover/archive/refs/heads/main.zip>
+2. Unzip it, then copy:
+```bash
+cp -r openclaw-browser-recover-main/skill/openclaw-browser-recover ~/.openclaw/workspace/skills/
+```
 
+## What you get
+- `skills/openclaw-browser-recover/SKILL.md`: the SOP
+- `skills/openclaw-browser-recover/scripts/healthcheck.sh`: one-shot port/gateway check
+
+Run healthcheck:
 ```bash
 bash ~/.openclaw/workspace/skills/openclaw-browser-recover/scripts/healthcheck.sh
 ```
 
-## Safety principles
-- **Do not spam browser tool retries** after a timeout.
-- Prefer: **wait → verify ports → restart gateway (once) → ask user to restart Chrome**.
-- Avoid `stop && start` unless explicitly requested.
+## Workflow (short version)
+1) Wait 20–30s (many cases self-heal)
+2) Check ports: 18789 / 18791 / 9222
+3) Probe `browser.status(profile="user")` once
+4) If still broken: restart gateway **once**
+5) If still `Connection closed`: restart Chrome (full quit) and retry
 
 ## License
 MIT
